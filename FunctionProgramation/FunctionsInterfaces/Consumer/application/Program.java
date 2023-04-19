@@ -18,7 +18,7 @@ public class Program {
 
         productList.forEach(x -> x.setPrice(x.getPrice() + 100));// Consumer Lambda
 
-        // productList.forEach(new ProductConsumer());// Predicate implements by class
+        // productList.forEach(new ProductConsumer());// Consumer implements by class
 
         productList.forEach(System.out::println); // Consumer Lambda to println
     }
