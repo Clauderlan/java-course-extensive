@@ -17,17 +17,14 @@ public class Program {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             connection = DB.getConnection();
             preparedStatement = connection.prepareStatement(
-                    "INSERT INTO seller "
-                    + "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
+                    "INSERT INTO department "
+                    + "(Name) "
                     + "values "
-                    + "(?,?,?,?,?)",
+                    + "(?)",
                     Statement.RETURN_GENERATED_KEYS);
 
-            preparedStatement.setString(1, "Carl Purple");
-            preparedStatement.setString(2, "carlpurple@gmail.com");
-            preparedStatement.setDate(3, new java.sql.Date(sdf.parse("11/04/1958").getTime()));
-            preparedStatement.setDouble(4, 3000.0);
-            preparedStatement.setInt(5, 4);
+            preparedStatement.setString(1, "DT");
+
 
             int rowsAffected = preparedStatement.executeUpdate();
 
@@ -38,7 +35,7 @@ public class Program {
                 }
             }else System.out.println("No rown affected.");
             //System.out.println("Done, rows affected: " + rowsAffected);
-        }catch (SQLException | ParseException e){
+        }catch (SQLException e){
             e.printStackTrace();
         } finally {
             DB.closeStatement(preparedStatement);
